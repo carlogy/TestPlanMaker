@@ -27,8 +27,8 @@ func BuilForm(tp *TestPlanTemplate.TestPlanTemplate) *huh.Form {
 				Value(&tp.UserStory),
 
 			huh.NewInput().
-				Title("Jira Link:").
-				Value(&tp.JiraLink),
+				Title("User Story Link:").
+				Value(&tp.UserStoryLink),
 
 			huh.NewSelect[string]().
 				Title("Validation Type:").

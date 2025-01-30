@@ -11,8 +11,8 @@ func TestStringerTestPlanMethod(t *testing.T) {
 		expected string
 	}{
 		{
-			testPlan: *NewTestPlan("name", "Ticket#", "https://jiralink.com", "UI Validation", "This is a test ticket", false),
-			expected: "TestPlan:\nName:\tname\nUser Story:\tTicket#\nJira Link:\thttps://jiralink.com\nDescription:\tThis is a test ticket\nAutomation Needed:\tfalse\tRequired Validation:\tUI Validation",
+			testPlan: *NewTestPlan("name", "Ticket#", "https://jiralink.com", "UI Validation", "This is a test ticket", "", false),
+			expected: "TestPlan:\nName:\tname\nUser Story:\tTicket#\nUser Story Link:\thttps://jiralink.com\nDescription:\tThis is a test ticket\n,Automation Needed:\tfalse\tRequired Validation:\tUI Validation",
 		},
 	}
 

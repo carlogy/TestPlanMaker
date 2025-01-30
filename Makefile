@@ -1,9 +1,12 @@
 run:
+	go run .
 
-	go build -o TestPlanMaker && ./TestPlanMaker
+compileRelease:
+
+	go build -o BuildTestPlan$(ver)
+
+	GOOS=windows GOARCH=amd64 go build -o BuildTestPlan$(ver).exe
 
 compile:
 
-	go build -o TestPlanMaker
-
-	GOOS=windows GOARCH=amd64 go build -o TestPlanMaker.exe
+	go build -o BuildTestPlan

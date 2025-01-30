@@ -21,6 +21,8 @@ func main() {
 
 	// add spinner func here ...
 
-	BuildTemplate(tp, "internal/Templates/testPlan.tmpl")
+	// BuildTemplate(tp, "internal/Templates/testPlan.tmpl")
+	//
+	BuildTemplateFromString(tp)
 
 }
