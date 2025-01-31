@@ -10,6 +10,8 @@ MakeTestPlan(ver#)
 ```
 example: MakeTestPlan.1.0
 
+![Demo](Demo.gif)
+
 ### Fields
 
 * Test Plan title: used as the title of the markdown file generated
