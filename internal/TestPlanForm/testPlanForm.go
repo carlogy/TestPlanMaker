@@ -30,6 +30,20 @@ func BuilForm(tp *TestPlanTemplate.TestPlanTemplate) *huh.Form {
 				Title("User Story Link:").
 				Value(&tp.UserStoryLink),
 
+			huh.NewInput().
+				Title("PM").
+				Value(&tp.PM),
+			huh.NewInput().
+				Title("Dev").
+				Value(&tp.Dev),
+			huh.NewInput().
+				Title("QA").
+				Value(&tp.QA),
+
+			huh.NewInput().
+				Title("User Story Components").
+				Value(&tp.UserStoryComponents),
+
 			huh.NewSelect[string]().
 				Title("Validation Type:").
 				Options(
@@ -37,6 +51,13 @@ func BuilForm(tp *TestPlanTemplate.TestPlanTemplate) *huh.Form {
 					huh.NewOption("API Validation", "API"),
 					huh.NewOption("UI & API Validation", "Both"),
 				).Value(&tp.RequiredValidation),
+
+			huh.NewSelect[bool]().
+				Title("Is automation needed?").
+				Options(
+					huh.NewOption("True", true),
+					huh.NewOption("False", false),
+				).Value(&tp.AutomationNeeded),
 
 			huh.NewText().
 				Title("Description:").
@@ -48,8 +69,10 @@ func BuilForm(tp *TestPlanTemplate.TestPlanTemplate) *huh.Form {
 				Value(&tp.SavePath),
 
 			huh.NewConfirm().
-				Title("Is Automation needed?").
-				Value(&tp.AutomationNeeded),
+				Title("Write Test Plan?").
+				Affirmative("Yes").
+				Negative("Not Yet").
+				Value(&tp.WriteToFile),
 		),
 	)
 

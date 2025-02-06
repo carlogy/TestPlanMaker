@@ -1,6 +1,7 @@
 package main
 
 import (
+	"errors"
 	"fmt"
 	"os"
 	"os/user"
@@ -9,34 +10,37 @@ import (
 	TP "github.com/carlogy/TestPlanMaker/internal/TestPlanTemplate"
 )
 
-func BuildTemplateFromString(tp *TP.TestPlanTemplate) {
+func BuildTemplateFromString(tp *TP.TestPlanTemplate) error {
 
 	if tp == nil {
 
-		fmt.Println("Empty instance, please ensure you are entering valid tokens.")
-		os.Exit(1)
+		return errors.New("Empty instance, please ensure you are entering valid tokens.")
+
 	}
 
 	fmt.Println("Starting to write template ")
 
 	saveFilePath, err := getSavePath(tp)
 	if err != nil {
-		fmt.Println("Error: unable to resolve save file path.")
+		return errors.New("Error: unable to resolve save file path.")
 	}
 
 	f, err := os.Create(saveFilePath)
 	if err != nil {
-		fmt.Println(err)
+		return fmt.Errorf("Error: %w while attempting to create file name.", err)
 	}
 
 	defer f.Close()
 
-	num, err := fmt.Fprintf(f, tp.MDString())
+	err = os.WriteFile(saveFilePath, []byte(tp.MDString()), 0644)
+
+	// num, err := fmt.Fprintf(f, tp.MDString())
 	if err != nil {
-		fmt.Errorf("Error: %w\n experienced while writing file\n", err)
+		return fmt.Errorf("Error: %w\n experienced while writing file\n", err)
+
 	}
 
-	fmt.Printf("Succesfully saved file to path:\t%s\nTotal bytes written:\t%d\n", saveFilePath, num)
+	return nil
 
 }
 

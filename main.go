@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"log"
+	"os"
 
 	TPF "github.com/carlogy/TestPlanMaker/internal/TestPlanForm"
 	TP "github.com/carlogy/TestPlanMaker/internal/TestPlanTemplate"
@@ -23,6 +24,10 @@ func main() {
 
 	// BuildTemplate(tp, "internal/Templates/testPlan.tmpl")
 	//
-	BuildTemplateFromString(tp)
-
+	err = BuildTemplateFromString(tp)
+	if err != nil {
+		fmt.Println(err)
+		os.Exit(1)
+	}
+	fmt.Printf("Succesfully saved file to path:\t%s\n\n", tp.SavePath)
 }
