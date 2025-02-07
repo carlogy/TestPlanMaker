@@ -14,7 +14,7 @@ This document is to plan out what features I need to build with this cli applica
   - to write to specified path **Complete**
   - Update form to collect path field to write to **Complete**
 
-## Future state features
+## Future state features in considertion
 * Build template for Jira ticket creation
 * Automation write to Jira
 * Live build of form inputs as TUI

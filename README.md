@@ -12,7 +12,7 @@ MakeTestPlan(ver#) *the version number is part of the release you have downloade
 ```
 example: MakeTestPlan.1.0
 
-![Demo](Demo.gif)
+![Demo](DemoV1.0.0.gif)
 
 ### Fields
 
@@ -40,6 +40,7 @@ example: MakeTestPlan.1.0
 ***
 
 ## Prerequisites
+
 If you want to run this project locally you need to install go. If you don't have go installed on your machine you can download it from https://go.dev/dl/
 
 
@@ -49,3 +50,17 @@ To run locally from within the DIR this project is in input into terminal ``` Ma
 ### Compilation
 
 In a terminal window in the directory this project is based run ```Make compile``` this will compile a binary based on your machine's OS with the name **BuildTestPlan**.
+
+### Read
+
+For this initial phase and the demo in include in this readme, I use the library glow from charmbracelet to read the md file I just created. I figured I'd add it to the make file commands in case you want to quickly view the .md file in your terminal as well!
+
+**To execute**
+Make sure you have *glow* installed on your machine [Installation Instruction](https://github.com/charmbracelet/glow#package-manager)
+
+In terminal window in directory this project is based run:
+
+```Make read filePath=filepath goes here```
+
+Example:
+```Make read filePath=./testSaveFileDir/example.md```

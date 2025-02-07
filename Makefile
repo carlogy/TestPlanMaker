@@ -10,3 +10,7 @@ compileRelease:
 compile:
 
 	go build -o BuildTestPlan
+
+read:
+
+	glow $(filePath)
