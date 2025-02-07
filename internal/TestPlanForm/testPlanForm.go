@@ -23,7 +23,7 @@ func BuilForm(tp *TestPlanTemplate.TestPlanTemplate) *huh.Form {
 				}),
 
 			huh.NewInput().
-				Title("User Story:").
+				Title("User Story ID:").
 				Value(&tp.UserStory),
 
 			huh.NewInput().
@@ -31,23 +31,27 @@ func BuilForm(tp *TestPlanTemplate.TestPlanTemplate) *huh.Form {
 				Value(&tp.UserStoryLink),
 
 			huh.NewInput().
-				Title("PM").
+				Title("Product Manager/Owner").
 				Value(&tp.PM),
+
 			huh.NewInput().
-				Title("Dev").
+				Title("Software Engineer").
 				Value(&tp.Dev),
+
 			huh.NewInput().
-				Title("QA").
+				Title("Quality Assurance Engineer").
 				Value(&tp.QA),
 
 			huh.NewInput().
 				Title("User Story Components").
 				Value(&tp.UserStoryComponents),
+		),
 
+		huh.NewGroup(
 			huh.NewSelect[string]().
 				Title("Validation Type:").
 				Options(
-					huh.NewOption("UI validation", "UI"),
+					huh.NewOption("UI Validation", "UI"),
 					huh.NewOption("API Validation", "API"),
 					huh.NewOption("UI & API Validation", "Both"),
 				).Value(&tp.RequiredValidation),

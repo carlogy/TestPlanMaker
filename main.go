@@ -26,7 +26,7 @@ func main() {
 	//
 	err = BuildTemplateFromString(tp)
 	if err != nil {
-		fmt.Println(err)
+		log.Fatal(err)
 		os.Exit(1)
 	}
 	fmt.Printf("Succesfully saved file to path:\t%s\n\n", tp.SavePath)

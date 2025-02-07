@@ -49,12 +49,12 @@ func (tp TestPlanTemplate) String() string {
 func (tp TestPlanTemplate) MDString() string {
 
 	title := "#  " + tp.Name + "\n\n"
-	link := fmt.Sprintf("User Story Link:\t[%s](%s)\n\n", tp.UserStory, tp.UserStoryLink)
+	link := fmt.Sprintf("**User Story Link:**\t[%s](%s)\n\n", tp.UserStory, tp.UserStoryLink)
 	table, _ := tableBuilder(tp)
-	components := fmt.Sprintf("User Story Components:\t%s\n\n", tp.UserStoryComponents)
-	auto := fmt.Sprintf("Requires Automation:\t%t\n\n", tp.AutomationNeeded)
+	components := fmt.Sprintf("**User Story Components:**\t%s\n\n", tp.UserStoryComponents)
+	auto := fmt.Sprintf("**Requires Automation:**\t%t\n\n", tp.AutomationNeeded)
 	description := fmt.Sprintf("## Description:\n%s\n\n", tp.Description)
-	testplan := "## Test Validation"
+	testplan := "## Test Validation\n\n"
 
 	return title + link + table + components + auto + "***\n" + description + "***\n" + testplan
 }
