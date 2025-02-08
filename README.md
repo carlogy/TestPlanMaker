@@ -8,11 +8,11 @@ In my day-to-day work, I find myself manually typing out test plans. I prefer a 
 ## How To Use
 To build a new test plan run:
 ```
-MakeTestPlan(ver#) *the version number is part of the release you have downloaded.
+BuildTestPlan(ver#) *the version number is part of the release you have downloaded
 ```
-example: MakeTestPlan.1.0
+example: BuildTestPlan1
 
-![Demo](DemoV1.0.0.gif)
+![Demo](DemoV1.0.1.gif)
 
 ### Fields
 
