@@ -29,5 +29,9 @@ func main() {
 		log.Fatal(err)
 		os.Exit(1)
 	}
+
+	if tp.SavePath == "" {
+		fmt.Println("Succesfully saved file to Desktop dir")
+	}
 	fmt.Printf("Succesfully saved file to path:\t%s\n\n", tp.SavePath)
 }

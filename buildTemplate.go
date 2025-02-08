@@ -13,35 +13,22 @@ import (
 func BuildTemplateFromString(tp *TP.TestPlanTemplate) error {
 
 	if tp == nil {
-
 		return errors.New("Empty instance, please ensure you are entering valid tokens.")
-
 	}
 
-	fmt.Println("Starting to write template ")
+	fmt.Println("Starting to write template")
 
 	saveFilePath, err := getSavePath(tp)
 	if err != nil {
 		return errors.New("Error: unable to resolve save file path.")
 	}
 
-	f, err := os.Create(saveFilePath)
-	if err != nil {
-		return fmt.Errorf("Error: %w while attempting to create file name.", err)
-	}
-
-	defer f.Close()
-
-	err = os.WriteFile(saveFilePath, []byte(tp.MDString()), 0644)
-
-	// num, err := fmt.Fprintf(f, tp.MDString())
+	err = os.WriteFile(saveFilePath, []byte(tp.MDString()), 0666)
 	if err != nil {
 		return fmt.Errorf("Error: %w\n experienced while writing file\n", err)
-
 	}
 
 	return nil
-
 }
 
 func BuildTemplate(tp *TP.TestPlanTemplate, templatePath string) {
