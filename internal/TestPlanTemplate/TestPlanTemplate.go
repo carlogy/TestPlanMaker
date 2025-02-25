@@ -23,21 +23,6 @@ type TicketDetails struct {
 	QA                  string
 }
 
-// Factory to test stringer function. For actually functionality will utilize the NewTestPlanBuild factory function to instanstiate a struct and return it's pointer to update with form inputs.
-
-// func NewTestPlan(name, ticket, userStoryLink, validation, description, savePath string, automation bool) *TestPlanTemplate {
-// 	tp := &TestPlanTemplate{
-// 		Name:               name,
-// 		TicketDetails:          ticket,
-// 		UserStoryLink:      userStoryLink,
-// 		RequiredValidation: validation,
-// 		Description:        description,
-// 		AutomationNeeded:   automation,
-// 		SavePath:           savePath,
-// 	}
-// 	return tp
-// }
-
 func NewTestPlanBuild() *TestPlanTemplate {
 	return &TestPlanTemplate{}
 }
@@ -51,17 +36,18 @@ func (tp TestPlanTemplate) MDString() string {
 	title := "#  " + tp.Name + "\n\n"
 	link := fmt.Sprintf("**User Story Link:**\t[%s](%s)\n\n", tp.UserStory, tp.UserStoryLink)
 	table, _ := tableBuilder(tp)
-	components := fmt.Sprintf("**User Story Components:**\t%s\n\n", tp.UserStoryComponents)
+	components := fmt.Sprintf("\n\n**User Story Components:**\t%s\n\n", tp.UserStoryComponents)
+	validatonType := fmt.Sprintf("**Validation Type:**\t%s\n\n", tp.RequiredValidation)
 	auto := fmt.Sprintf("**Requires Automation:**\t%t\n\n", tp.AutomationNeeded)
-	description := fmt.Sprintf("## Description:\n%s\n\n", tp.Description)
-	testplan := "## Test Validation\n\n"
+	description := fmt.Sprintf("##  Description:\n%s\n\n", tp.Description)
+	testplan := "##  Test Validation\n\n"
 
-	return title + link + table + components + auto + "***\n" + description + "***\n" + testplan
+	return title + link + table + components + validatonType + auto + "\n\n***\n\n" + description + "\n\n***\n\n" + testplan
 }
 
 func tableBuilder(tp TestPlanTemplate) (string, error) {
 
-	table := fmt.Sprintf("| PM  | DEV | QA |\n| :----: | :----: | :----: |\n| %s | %s | %s |\n\n", tp.PM, tp.Dev, tp.QA)
+	table := fmt.Sprintf("| PM  | SE | QAE |\n| :----: | :----: | :----: |\n| %s | %s | %s |\n\n", tp.PM, tp.Dev, tp.QA)
 
 	return table, nil
 
