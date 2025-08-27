@@ -2,17 +2,19 @@ package TestPlanTemplate
 
 import (
 	"testing"
+
+	TP "github.com/carlogy/TestPlanMaker/internal/TestPlanTemplate"
 )
 
 func TestMDStringerPlanMethod(t *testing.T) {
 	tests := []struct {
-		tp       TestPlanTemplate
+		tp       TP.TestPlanTemplate
 		expected string
 	}{
 		{
-			tp: TestPlanTemplate{
+			tp: TP.TestPlanTemplate{
 				Name: "Test Plan Test",
-				TicketDetails: TicketDetails{
+				TicketDetails: TP.TicketDetails{
 					UserStory:           "TST-100",
 					UserStoryLink:       "https://jira.com/TST-100",
 					UserStoryComponents: "Test_PlanBuilder",

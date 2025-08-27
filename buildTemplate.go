@@ -13,19 +13,19 @@ import (
 func BuildTemplateFromString(tp *TP.TestPlanTemplate) error {
 
 	if tp == nil {
-		return errors.New("Empty instance, please ensure you are entering valid tokens.")
+		return errors.New("empty instance, please ensure you are entering valid tokens")
 	}
 
 	fmt.Println("Starting to write template")
 
 	saveFilePath, err := getSavePath(tp)
 	if err != nil {
-		return errors.New("Error: unable to resolve save file path.")
+		return errors.New("error: unable to resolve save file path")
 	}
 
 	err = os.WriteFile(saveFilePath, []byte(tp.MDString()), 0666)
 	if err != nil {
-		return fmt.Errorf("Error: %w\n experienced while writing file\n", err)
+		return fmt.Errorf("error: %w\n experienced while writing file", err)
 	}
 
 	return nil
@@ -35,7 +35,7 @@ func BuildTemplate(tp *TP.TestPlanTemplate, templatePath string) {
 
 	if tp == nil {
 
-		fmt.Println("Empty instance, please ensure you are entering valid tokens.")
+		fmt.Println("empty instance, please ensure you are entering valid tokens")
 		os.Exit(1)
 	}
 
@@ -49,7 +49,7 @@ func BuildTemplate(tp *TP.TestPlanTemplate, templatePath string) {
 
 	saveFilePath, err := getSavePath(tp)
 	if err != nil {
-		fmt.Println("Error: unable to resolve save file path.")
+		fmt.Println("error: unable to resolve save file path")
 	}
 
 	f, err := os.Create(saveFilePath)

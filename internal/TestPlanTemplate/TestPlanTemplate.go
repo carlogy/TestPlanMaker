@@ -9,6 +9,7 @@ type TestPlanTemplate struct {
 	TicketDetails
 	RequiredValidation string
 	Description        string
+	TestCases          string
 	SavePath           string
 	WriteToFile        bool
 }
@@ -39,8 +40,8 @@ func (tp TestPlanTemplate) MDString() string {
 	components := fmt.Sprintf("\n\n**User Story Components:**\t%s\n\n", tp.UserStoryComponents)
 	validatonType := fmt.Sprintf("**Validation Type:**\t%s\n\n", tp.RequiredValidation)
 	auto := fmt.Sprintf("**Requires Automation:**\t%t\n\n", tp.AutomationNeeded)
-	description := fmt.Sprintf("##  Description:\n%s\n\n", tp.Description)
-	testplan := "##  Test Validation\n\n"
+	description := fmt.Sprintf("##  Ticket Description\n%s\n\n", tp.Description)
+	testplan := fmt.Sprintf("## Test Validation\n\n\t### Test Cases\n\n\t%s", tp.TestCases)
 
 	return title + link + table + components + validatonType + auto + "\n\n***\n\n" + description + "\n\n***\n\n" + testplan
 }

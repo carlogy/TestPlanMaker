@@ -1,6 +1,6 @@
 module github.com/carlogy/TestPlanMaker
 
-go 1.23.5
+go 1.25
 
 require github.com/charmbracelet/huh v0.6.0
 

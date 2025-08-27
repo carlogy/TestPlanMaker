@@ -7,7 +7,7 @@ import (
 	"github.com/charmbracelet/huh"
 )
 
-func BuilForm(tp *TestPlanTemplate.TestPlanTemplate) *huh.Form {
+func BuildForm(tp *TestPlanTemplate.TestPlanTemplate) *huh.Form {
 
 	form := huh.NewForm(
 
@@ -17,7 +17,7 @@ func BuilForm(tp *TestPlanTemplate.TestPlanTemplate) *huh.Form {
 				Value(&tp.Name).
 				Validate(func(str string) error {
 					if len(str) < 1 {
-						return errors.New("Test Plan Name is required.")
+						return errors.New("test plan name is required")
 					}
 					return nil
 				}),
@@ -67,6 +67,13 @@ func BuilForm(tp *TestPlanTemplate.TestPlanTemplate) *huh.Form {
 				Title("Description:").
 				CharLimit(800).
 				Value(&tp.Description),
+		),
+
+		huh.NewGroup(
+			huh.NewText().
+				Title("Test Cases:").
+				CharLimit(800).
+				Value(&tp.TestCases),
 
 			huh.NewInput().Title("Save file to path:").
 				CharLimit(260).

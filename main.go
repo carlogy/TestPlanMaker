@@ -13,7 +13,7 @@ func main() {
 	fmt.Println("Welcome to test plan maker!\nLet's build out a test plan template together.")
 
 	tp := TP.NewTestPlanBuild()
-	tpf := TPF.BuilForm(tp)
+	tpf := TPF.BuildForm(tp)
 
 	err := tpf.Run()
 	if err != nil {
