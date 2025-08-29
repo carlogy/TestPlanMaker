@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"os"
 	"os/user"
+	"path/filepath"
 	"text/template"
 
 	TP "github.com/carlogy/TestPlanMaker/internal/TestPlanTemplate"
@@ -23,7 +24,9 @@ func BuildTemplateFromString(tp *TP.TestPlanTemplate) error {
 		return errors.New("error: unable to resolve save file path")
 	}
 
-	err = os.WriteFile(saveFilePath, []byte(tp.MDString()), 0666)
+	cleanFilePath := filepath.Clean(saveFilePath)
+	err = os.WriteFile(cleanFilePath, []byte(tp.MDString()), 0600)
+	//err = os.WriteFile(cleanFilePath, []byte(tp.MDString()), 0666)
 	if err != nil {
 		return fmt.Errorf("error: %w\n experienced while writing file", err)
 	}
@@ -48,11 +51,13 @@ func BuildTemplate(tp *TP.TestPlanTemplate, templatePath string) {
 	}
 
 	saveFilePath, err := getSavePath(tp)
+
 	if err != nil {
 		fmt.Println("error: unable to resolve save file path")
 	}
 
-	f, err := os.Create(saveFilePath)
+	cleanFilePath := filepath.Clean(saveFilePath)
+	f, err := os.Create(cleanFilePath)
 	if err != nil {
 		fmt.Println(err)
 	}

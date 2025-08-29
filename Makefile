@@ -14,3 +14,15 @@ compile:
 read:
 
 	glow $(filePath)
+
+test:
+	go clean -cache
+	go test ./...
+
+lint:
+
+	staticcheck ./...
+
+sec:
+
+	gosec ./...
