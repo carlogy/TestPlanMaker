@@ -1,3 +1,5 @@
+[![CI](https://github.com/carlogy/TestPlanMaker/actions/workflows/CI.yml/badge.svg)](https://github.com/carlogy/TestPlanMaker/actions/workflows/CI.yml)
+
 # Test plan maker
 
 ## About
